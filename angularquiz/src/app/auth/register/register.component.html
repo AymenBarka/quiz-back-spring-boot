@@ -1,0 +1,106 @@
+<div class="card m-3" style="width: 600px;position:relative;left:30%;">
+    <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" name="form">
+            <div class="form-row">
+
+                <div class="form-group col-5">
+                    <label> Name</label>
+                    <input type="text" formControlName="name" [(ngModel)]="form.name"  class="form-control" style="border: 5px outset"
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required"> Name is required</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Username</label>
+                    <input type="text" formControlName="username" [(ngModel)]="form.username" class="form-control"
+                        style="border:5px outset;  text-align : center"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">username is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Email</label>
+                    <input type="text" formControlName="email" [(ngModel)]="form.email" class="form-control" style="border: 5px outset"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" [(ngModel)]="form.password" class="form-control" style="border: 5px outset"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+
+            </div>
+            <!--div class="form-group">
+                <label for="role">Role</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="role"
+                  required
+                />
+      
+              </div-->
+            <!--div class="form-group">
+                <label for="poste">Poste</label>
+                <select id="inputPoste" class="form-control">
+                    <option selected>choose...</option>
+                    <option *ngFor = "let item of postes" [value]="item">{{item}}</option>
+                </select>
+
+            </div-->
+            <div class="form-group form-check">
+                <hr class="my-4" />
+                <h6 class="heading-small text-muted mb-4">Role</h6>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="admin" id="admin"
+                    (click)="chooseRoles($event)">
+                  <label class="form-check-label" for="user">
+                    Administrateur
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="user" id="user"
+                    (click)="chooseRoles($event)">
+                  <label class="form-check-label" for="user">
+                    Candidat
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="coach" id="coach"
+                    (click)="chooseRoles($event)">
+                  <label class="form-check-label" for="user">
+                    Coach
+                  </label>
+                </div>
+                <hr class="my-4" />
+            </div>
+            <!--div *ngFor="let choice of role; let i=index" class="col-md-2">
+                <label>
+                  <input type="checkbox" [value]="choice.value" (change)="onCheckChange($event)">
+                  {{choice.description}}
+                </label>
+            </div-->
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Register</button>
+            </div>
+        </form>
+    </div>
+</div>

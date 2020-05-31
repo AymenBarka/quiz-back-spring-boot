@@ -1,0 +1,55 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {ReactiveFormsModule,FormsModule} from '@angular/forms'
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import { LoginComponent } from './auth/login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import { AuthService } from './service/auth.service';
+import { TokenInterceptorService } from './token-interceptor.service';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { CoachComponent } from './coach/coach.component';
+import { CandidatComponent } from './candidat/candidat.component';
+import { AddComponent } from './coach/add/add.component';
+
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    RegisterComponent,
+    LoginComponent,
+    NavbarComponent,
+    AuthComponent,
+    CoachComponent,
+    CandidatComponent,
+    AddComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+     BrowserAnimationsModule,
+     MatIconModule,
+     MatInputModule,
+     MatSliderModule
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  providers: [AuthGuardService,AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
