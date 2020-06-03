@@ -6,16 +6,20 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CoachComponent } from './coach/coach.component';
 import { AddComponent } from './coach/add/add.component';
+import { ListComponent } from './coach/list/list.component';
+import { UpdateComponent } from './coach/update/update.component';
 
 
 const routes: Routes = [
-  {path:'login', component:LoginComponent},
-  {path:'register', component : RegisterComponent},
-  {path: 'coach', component : CoachComponent, 
-},
-  {path: 'candidat', component: CandidatComponent,canActivate: [AuthGuardService] 
-},
-  { path: 'coach/add', component: AddComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'coach', component: CoachComponent, canActivate: [AuthGuardService]  },
+  { path: 'candidat', component: CandidatComponent, canActivate: [AuthGuardService] },
+  { path: 'coach/add', component: AddComponent, canActivate: [AuthGuardService] },
+  { path: 'coach/list', component: ListComponent, canActivate: [AuthGuardService] },
+  { path: 'coach/update/:id', component: UpdateComponent, canActivate: [AuthGuardService]},
+
+
 
 ];
 

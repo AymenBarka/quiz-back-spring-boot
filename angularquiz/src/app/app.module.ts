@@ -18,6 +18,8 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { CoachComponent } from './coach/coach.component';
 import { CandidatComponent } from './candidat/candidat.component';
 import { AddComponent } from './coach/add/add.component';
+import { ListComponent } from './coach/list/list.component';
+import { UpdateComponent } from './coach/update/update.component';
 
 
 
@@ -31,6 +33,8 @@ import { AddComponent } from './coach/add/add.component';
     CoachComponent,
     CandidatComponent,
     AddComponent,
+    ListComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

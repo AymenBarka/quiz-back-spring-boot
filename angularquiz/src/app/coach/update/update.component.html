@@ -4,7 +4,7 @@
         <!--      Wizard container        -->
         <div class="wizard-container">
           <div class="card card-wizard active" data-color="rose" id="wizardProfile">
-            <form [formGroup]="test" action="#" method="" novalidate="novalidate">
+            <form [formGroup]="testup" action="#" method="" novalidate="novalidate">
               <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
               <div class="card-header text-center">
                     <div class="form-group">
@@ -13,7 +13,7 @@
                   </div>
               </div>
               <div formArrayName="question" class="card-body">
-                    <div *ngFor="let s of test.get('question')['controls']; let i = index;" class="row justify-content-center">
+                    <div *ngFor="let s of testup.get('question')['controls']; let i = index;" class="row justify-content-center">
                       <div [formGroupName]="i" class="col-sm-12">
                         <h5 class="info-text"> Question:{{i+1}}</h5>
                       <div class="col-sm-7">
@@ -60,7 +60,7 @@
                   <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" (click)="addques()" name="next" value="Next">
                 </div>
                 <div class="ml-auto">
-                  <input type="button" (click)="addt()" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Finish" >
+                  <input type="button" (click)="update()" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Finish" >
                 </div>
                 <div class="clearfix"></div>
               </div>

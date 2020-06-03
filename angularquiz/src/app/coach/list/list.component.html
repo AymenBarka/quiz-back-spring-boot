@@ -1,0 +1,45 @@
+<div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon card-header-rose">
+        <div class="card-icon">
+          <i class="material-icons">assignment</i>
+        </div>
+        <h4 class="card-title ">List Test</h4>
+      </div>
+      <div class="card-body table-full-width table-hover">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="">
+              <th>
+                ID
+              </th>
+              <th>
+                Name test
+              </th>
+              <th class="td-actions text-right">
+               Actions
+              </th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let test of tab; let i = index;" class="table-success">
+                <td>
+                  {{i+1}}
+                </td>
+                <td>
+                  {{test.titre}}
+                </td>
+                <td class="td-actions text-right">
+                    <button type="button" routerLink="/coach/update/{id}"  class="btn btn-success btn-round">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button (click)="remove(test.id)" type="button" class="btn btn-danger btn-round">
+                        <i class="material-icons">close</i>
+                      </button>
+                  </td>
+               </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

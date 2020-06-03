@@ -14,9 +14,7 @@ export class JwtResponse {
   ) { }
 }
 const TOKEN_KEY = 'AuthToken';
-const ID = 'id';
 const TOKEN = 'token';
-const USERNAME = 'username';
 
 
 @Injectable({
