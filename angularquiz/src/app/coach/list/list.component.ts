@@ -1,6 +1,7 @@
 import { Quiz } from './../../models/quiz';
 import { Component, OnInit } from '@angular/core';
 import { CoachService } from 'src/app/service/coach.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,7 @@ import { CoachService } from 'src/app/service/coach.service';
 })
 export class ListComponent implements OnInit {
 id:number;
-  constructor(private service : CoachService) { }
+  constructor(private router:Router,private service : CoachService) { }
   tab = [];
   ngOnInit(): void {
     this.loadData();
@@ -18,6 +19,7 @@ id:number;
     this.service.getQuiz().subscribe(data =>{
       console.log(data);
       this. tab = data;
+      console.log(data);
     },(error)=>{
       console.log(error);
     
@@ -30,6 +32,9 @@ id:number;
     },(error)=>{
       console.log(error);
     })
+      }
+      update(test){
+        this.router.navigate(['/coach/update',test.id]);
       }
 
 }

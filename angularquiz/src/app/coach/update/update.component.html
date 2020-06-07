@@ -12,6 +12,7 @@
                       <input formControlName="titre" type="text" class="form-control">
                   </div>
               </div>
+              
               <div formArrayName="question" class="card-body">
                     <div *ngFor="let s of testup.get('question')['controls']; let i = index;" class="row justify-content-center">
                       <div [formGroupName]="i" class="col-sm-12">
@@ -55,12 +56,15 @@
                     </div>
                     </div>
                   </div>
+
+
+
               <div class="card-footer">
                 <div class="mr-auto">
                   <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" (click)="addques()" name="next" value="Next">
                 </div>
                 <div class="ml-auto">
-                  <input type="button" (click)="update()" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Finish" >
+                  <input type="button" (click)="update()" class="btn btn-finish btn-fill btn-rose btn-wd" name="update" value="update" >
                 </div>
                 <div class="clearfix"></div>
               </div>

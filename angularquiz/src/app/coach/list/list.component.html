@@ -29,7 +29,7 @@
                   {{test.titre}}
                 </td>
                 <td class="td-actions text-right">
-                    <button type="button" routerLink="/coach/update/{id}"  class="btn btn-success btn-round">
+                    <button type="button" (click)="update(test)"  class="btn btn-success btn-round">
                         <i class="material-icons">edit</i>
                       </button>
                       <button (click)="remove(test.id)" type="button" class="btn btn-danger btn-round">
