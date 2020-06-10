@@ -18,7 +18,7 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     // this.id = this.route.snapshot.params.id;
-
+   this.quiz = new Quiz();
     this.route.paramMap.subscribe(ParamMap => {
 
       this.service.gettedQuiz(this.route.snapshot.params.id).subscribe(data => {
@@ -64,15 +64,17 @@ export class UpdateComponent implements OnInit {
       option4: new FormControl(q.option4)
     });
   }
-  addques() {
+
+   addques() {
     this.question.push(this.ques());
   }
   update() {
-    this.service.updateQuiz(this.quiz.id, this.testup.value).subscribe(data => {
+    this.service.updateQuiz(this.quiz.id, this.quiz).subscribe(data => {
        console.log(data);
-      this.router.navigateByUrl('/register');
+     this.router.navigateByUrl('/register');
+    },err =>{
 
-
+    console.log(err)
     });
   }
 

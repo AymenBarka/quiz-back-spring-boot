@@ -20,6 +20,8 @@ import { CandidatComponent } from './candidat/candidat.component';
 import { AddComponent } from './coach/add/add.component';
 import { ListComponent } from './coach/list/list.component';
 import { UpdateComponent } from './coach/update/update.component';
+import { ListQuizComponent } from './candidat/list-quiz/list-quiz.component';
+import { TestQuizComponent } from './candidat/test-quiz/test-quiz.component';
 
 
 
@@ -35,6 +37,8 @@ import { UpdateComponent } from './coach/update/update.component';
     AddComponent,
     ListComponent,
     UpdateComponent,
+    ListQuizComponent,
+    TestQuizComponent,
   ],
   imports: [
     BrowserModule,

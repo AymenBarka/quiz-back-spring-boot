@@ -14,7 +14,7 @@ export class CoachService {
   URL = 'http://localhost:8084/quiz/';
 
   addQuiz(quiz: Quiz): Observable<any>{
-    return this.http.post(`${this.URL}` + 'add',quiz)
+    return this.http.post(`${this.URL}` + 'add',quiz,httpOptions)
 
   }
 
@@ -25,7 +25,7 @@ export class CoachService {
     return this. http.delete(`${this.URL}`+ 'deleteQuiz' + '/'  + `${id}`, httpOptions);
   }
   updateQuiz(id:number,value:any) : Observable<any>{
-    return this.http.put(`${this.URL}`+ 'UpdateQuiz' + '/'  + `${id}`,value);
+    return this.http.put(`${this.URL}`+ 'UpdateQuiz' + '/'  + `${id}`,value,httpOptions);
   }
   gettedQuiz(id:number):Observable<any>{
     return this.http.get(`${this.URL}` + 'quizbyId' + '/'  + `${id}`);

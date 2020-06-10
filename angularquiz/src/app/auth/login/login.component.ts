@@ -50,25 +50,21 @@ export class LoginComponent implements OnInit {
             this.tokenStorage.saveUser(data);
 
             this.roles = this.tokenStorage.getUser().roles;
-
-          // if (this.roles===['ROLE_ADMIN']){
-           //  console.log(this.tokenStorage.getUser().roles)
-           //this.router.navigate(['/candidat']);
-           this.router.navigate(['/coach/add']);
-           this.loading=true;
+            this.loading=true;
            this.submitted = true;
+           if (this.roles===['ROLE_COACH']){
+           this.router.navigate(['/coach']);
+           
+           }else {
+            this.router.navigate(['/candidat']);
 
-
-
-           //}else {
-           // this.router.navigate(['/coach/add']);
-
-          // }
+           }
           },
           error => {
             this.errorMessage = error.error.message;
 
               this.loading = false;
+              this.submitted = false;
           });
 
   }

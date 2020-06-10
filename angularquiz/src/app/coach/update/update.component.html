@@ -1,77 +1,80 @@
 <div class="content">
     <div class="container-fluid">
-      <div class="col-md-8 col-12 mr-auto ml-auto">
-        <!--      Wizard container        -->
-        <div class="wizard-container">
-          <div class="card card-wizard active" data-color="rose" id="wizardProfile">
-            <form [formGroup]="testup" action="#" method="" novalidate="novalidate">
-              <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
-              <div class="card-header text-center">
-                    <div class="form-group">
-                      <label>TEST Name........</label>
-                      <input formControlName="titre" type="text" class="form-control">
-                  </div>
-              </div>
-              
-              <div formArrayName="question" class="card-body">
-                    <div *ngFor="let s of testup.get('question')['controls']; let i = index;" class="row justify-content-center">
-                      <div [formGroupName]="i" class="col-sm-12">
-                        <h5 class="info-text"> Question:{{i+1}}</h5>
-                      <div class="col-sm-7">
-                        <div class="form-group">
-                          <label>Question Name</label>
-                          <input formControlName="questionName" type="text" class="form-control">
+        <div class="col-md-8 col-12 mr-auto ml-auto">
+            <!--      Wizard container        -->
+            <div class="wizard-container">
+                <div class="card card-wizard active" data-color="rose" id="wizardProfile">
+                    <form *ngIf="testup" [formGroup]="testup" action="#" method="" novalidate="novalidate">
+                        <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+                        <div class="card-header text-center">
+                            <div class="form-group">
+                                <label>TEST Name........</label>
+                                <input formControlName="titre" type="text" class="form-control">
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-sm-7">
-                        <div class="form-group">
-                          <label>Bonne Reponse</label>
-                          <input formControlName="reponse" type="text" class="form-control">
+
+                        <div formArrayName="question" class="card-body">
+                            <div *ngFor="let s of testup.get('question')['controls']; let i = index;"
+                                class="row justify-content-center">
+                                <div [formGroupName]="i" class="col-sm-12">
+                                    <h5 class="info-text"> Question:{{i+1}}</h5>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label>Question Name</label>
+                                            <input formControlName="questionName" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label>Bonne Reponse</label>
+                                            <input formControlName="reponse" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label> Option 1</label>
+                                            <input formControlName="option1" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label>Option 2</label>
+                                            <input formControlName="option2" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label>Option 3</label>
+                                            <input formControlName="option3" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label>Option 4</label>
+                                            <input formControlName="option4" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-sm-7">
-                        <div class="form-group">
-                          <label> Option 1</label>
-                          <input formControlName="option1" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-sm-7">
-                        <div class="form-group">
-                          <label>Option 2</label>
-                          <input formControlName="option2" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-sm-7">
-                        <div class="form-group">
-                          <label>Option 3</label>
-                          <input formControlName="option3" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-sm-7">
-                        <div class="form-group">
-                          <label>Option 4</label>
-                          <input formControlName="option4" type="text" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
 
 
 
-              <div class="card-footer">
-                <div class="mr-auto">
-                  <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" (click)="addques()" name="next" value="Next">
+                        <div class="card-footer">
+                            <div class="mr-auto">
+                                <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" (click)="addques()"
+                                    name="next" value="Next">
+                            </div>
+                            <div class="ml-auto">
+                                <input type="button" (click)="update()" class="btn btn-finish btn-fill btn-rose btn-wd"
+                                    name="finish" value="Finish">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
                 </div>
-                <div class="ml-auto">
-                  <input type="button" (click)="update()" class="btn btn-finish btn-fill btn-rose btn-wd" name="update" value="update" >
-                </div>
-                <div class="clearfix"></div>
-              </div>
-            </form>
-          </div>
+            </div>
+            <!-- wizard container -->
         </div>
-        <!-- wizard container -->
-      </div>
     </div>
-  </div>
+</div>

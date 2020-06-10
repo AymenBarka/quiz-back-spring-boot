@@ -8,6 +8,7 @@ import { CoachComponent } from './coach/coach.component';
 import { AddComponent } from './coach/add/add.component';
 import { ListComponent } from './coach/list/list.component';
 import { UpdateComponent } from './coach/update/update.component';
+import { TestQuizComponent } from './candidat/test-quiz/test-quiz.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   { path: 'coach/add', component: AddComponent, canActivate: [AuthGuardService] },
   { path: 'coach/list', component: ListComponent, canActivate: [AuthGuardService] },
   { path: 'coach/update/:id', component: UpdateComponent, canActivate: [AuthGuardService]},
+  { path: 'candidat', component: CandidatComponent , canActivate: [AuthGuardService]},
+  { path: 'candidat/testQuiz/:id', component: TestQuizComponent , canActivate: [AuthGuardService]},
+
+
 
 
 

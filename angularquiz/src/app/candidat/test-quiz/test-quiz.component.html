@@ -1,0 +1,36 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="col-md-8 col-12 mr-auto ml-auto">
+      <!--      Wizard container        -->
+      <div class="wizard-container">
+        <div class="card card-wizard active" data-color="rose" id="wizardProfile">
+          <div action="#" method="" novalidate="novalidate">
+            <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+            <div class="card-header text-center">
+              <div class="form-group">
+                <label *ngIf="quiz">TEST Name : {{quiz?.titre}}</label>
+              </div>
+            </div>
+            <div *ngFor="let test of tab; let i = index;" class="card-body">
+              <div class="row justify-content-center">
+                <div class="col-sm-12">
+                  <h5 class="info-text"> Question {{i+1}}: {{test.question[i].questionName}}</h5>
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                    <mat-radio-button class="example-radio-button" [value]="test.question[i].option1">
+                      {{test.question[i].option1}}</mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="test.question[i].option2">
+                      {{test.question[i].option2}}</mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="test.question[i].option3">
+                      {{test.question[i].option3}}</mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="test.question[i].option4">
+                      {{test.question[i].option4}}</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
