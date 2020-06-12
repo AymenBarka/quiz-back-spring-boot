@@ -52,7 +52,11 @@ export class LoginComponent implements OnInit {
             this.roles = this.tokenStorage.getUser().roles;
             this.loading=true;
            this.submitted = true;
-           if (this.roles===['ROLE_COACH']){
+           console.log(this.roles);
+
+           if (this.roles.includes('ROLE_COACH')){
+            console.log(this.roles);
+
            this.router.navigate(['/coach']);
            
            }else {

@@ -1,3 +1,4 @@
+import { Question } from './../../models/question';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoachService } from 'src/app/service/coach.service';
@@ -9,10 +10,9 @@ import { Quiz } from 'src/app/models/quiz';
   styleUrls: ['./test-quiz.component.css']
 })
 export class TestQuizComponent implements OnInit {
-  tab=[];
-  f:any;
   id: number;
-  quiz: [];
+  quiz: Quiz;
+  question : Question;
   constructor(private route: ActivatedRoute, private service: CoachService) { }
   
   ngOnInit(): void {
@@ -25,5 +25,10 @@ export class TestQuizComponent implements OnInit {
       })
     })
   }
+
+  templateForm(data: any) {
+    console.log(data)
+    alert(JSON.stringify(data));
+ }
   
 }

@@ -8,23 +8,40 @@
             <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
             <div class="card-header text-center">
               <div class="form-group">
-                <label *ngIf="quiz">TEST Name : {{quiz?.titre}}</label>
+                <label *ngIf="quiz">TEST Name : {{quiz.titre}}</label>
               </div>
             </div>
-            <div *ngFor="let test of tab; let i = index;" class="card-body">
+            <div *ngFor="let qz of quiz?.question ; let i = index;" class="card-body">
               <div class="row justify-content-center">
                 <div class="col-sm-12">
-                  <h5 class="info-text"> Question {{i+1}}: {{test.question[i].questionName}}</h5>
-                  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
-                    <mat-radio-button class="example-radio-button" [value]="test.question[i].option1">
-                      {{test.question[i].option1}}</mat-radio-button>
-                    <mat-radio-button class="example-radio-button" [value]="test.question[i].option2">
-                      {{test.question[i].option2}}</mat-radio-button>
-                    <mat-radio-button class="example-radio-button" [value]="test.question[i].option3">
-                      {{test.question[i].option3}}</mat-radio-button>
-                    <mat-radio-button class="example-radio-button" [value]="test.question[i].option4">
-                      {{test.question[i].option4}}</mat-radio-button>
-                  </mat-radio-group>
+                  <h5 class="info-text"> Question {{i+1}}: {{qz.questionName}}</h5>
+
+                  <form #myForm="ngForm" (submit)="templateForm(myForm.value)" novalidate>
+
+                    <div class="custom-control custom-radio">
+                      <input id="{{ qz.option1}}" type="radio" class="custom-control-input" [value]="qz.option1" name="option"
+                        ngModel>
+                      <label class="custom-control-label" for="{{ qz.option1}}">{{qz.option1}}</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input id="{{ qz.option2}}" type="radio" class="custom-control-input" [value]="qz.option2" name="option"
+                        ngModel>
+                      <label class="custom-control-label" for="{{ qz.option2}}">{{qz.option2}}</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input id="{{ qz.option3}}" type="radio" class="custom-control-input" [value]="qz.option3" name="option"
+                        ngModel>
+                      <label class="custom-control-label" for="{{ qz.option3}}">{{qz.option3}}</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                      <input id="{{ qz.option4}}" type="radio" class="custom-control-input" [value]="qz.option4"
+                        name="option" ngModel>
+                      <label class="custom-control-label" for="{{ qz.option4}}">{{qz.option4}}</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger btn-lg btn-block">Next</button>
+                  </form><!-- Form ends -->
                 </div>
               </div>
             </div>
@@ -34,3 +51,5 @@
     </div>
   </div>
 </div>
+
+<!-- Form starts -->

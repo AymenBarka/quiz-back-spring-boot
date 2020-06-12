@@ -1,5 +1,7 @@
+import { Question } from './question';
+
 export class Quiz {
-   titre : string;
-   question : string []=[];
   id: number;
+  titre: string;
+  question: Question[];
 }

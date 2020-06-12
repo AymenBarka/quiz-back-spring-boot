@@ -68,8 +68,9 @@ export class UpdateComponent implements OnInit {
    addques() {
     this.question.push(this.ques());
   }
+ 
   update() {
-    this.service.updateQuiz(this.quiz.id, this.quiz).subscribe(data => {
+    this.service.updateQuiz(this.quiz.id, this.testup).subscribe(data => {
        console.log(data);
      this.router.navigateByUrl('/register');
     },err =>{
@@ -77,6 +78,7 @@ export class UpdateComponent implements OnInit {
     console.log(err)
     });
   }
+ 
 
 }
 
