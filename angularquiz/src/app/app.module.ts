@@ -22,6 +22,8 @@ import { ListComponent } from './coach/list/list.component';
 import { UpdateComponent } from './coach/update/update.component';
 import { ListQuizComponent } from './candidat/list-quiz/list-quiz.component';
 import { TestQuizComponent } from './candidat/test-quiz/test-quiz.component';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 
@@ -49,6 +51,7 @@ import { TestQuizComponent } from './candidat/test-quiz/test-quiz.component';
      BrowserAnimationsModule,
      MatIconModule,
      MatInputModule,
+     MatRadioModule,
      MatSliderModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],

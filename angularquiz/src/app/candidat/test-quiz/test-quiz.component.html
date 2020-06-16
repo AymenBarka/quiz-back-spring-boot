@@ -4,46 +4,47 @@
       <!--      Wizard container        -->
       <div class="wizard-container">
         <div class="card card-wizard active" data-color="rose" id="wizardProfile">
-          <div action="#" method="" novalidate="novalidate">
-            <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+          <div>
             <div class="card-header text-center">
               <div class="form-group">
-                <label *ngIf="quiz">TEST Name : {{quiz.titre}}</label>
+                <label>TEST Name : {{quiz?.titre}}</label>
               </div>
             </div>
-            <div *ngFor="let qz of quiz?.question ; let i = index;" class="card-body">
+            <div class="card-body">
               <div class="row justify-content-center">
                 <div class="col-sm-12">
-                  <h5 class="info-text"> Question {{i+1}}: {{qz.questionName}}</h5>
-
-                  <form #myForm="ngForm" (submit)="templateForm(myForm.value)" novalidate>
-
-                    <div class="custom-control custom-radio">
-                      <input id="{{ qz.option1}}" type="radio" class="custom-control-input" [value]="qz.option1" name="option"
-                        ngModel>
-                      <label class="custom-control-label" for="{{ qz.option1}}">{{qz.option1}}</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                      <input id="{{ qz.option2}}" type="radio" class="custom-control-input" [value]="qz.option2" name="option"
-                        ngModel>
-                      <label class="custom-control-label" for="{{ qz.option2}}">{{qz.option2}}</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                      <input id="{{ qz.option3}}" type="radio" class="custom-control-input" [value]="qz.option3" name="option"
-                        ngModel>
-                      <label class="custom-control-label" for="{{ qz.option3}}">{{qz.option3}}</label>
-                    </div>
-
-                    <div class="custom-control custom-radio">
-                      <input id="{{ qz.option4}}" type="radio" class="custom-control-input" [value]="qz.option4"
-                        name="option" ngModel>
-                      <label class="custom-control-label" for="{{ qz.option4}}">{{qz.option4}}</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-danger btn-lg btn-block">Next</button>
-                  </form><!-- Form ends -->
+                  <h5 class="info-text"> Question {{i+1}}: {{quiz?.question[i]?.questionName}}</h5>
+                  
+                    <mat-radio-button [checked]="quiz?.question[i]?.option1 ===  repCand[i]"
+                      class="example-radio-button" (click)="check(quiz?.question[i]?.option1)">
+                      {{quiz?.question[i]?.option1}}</mat-radio-button>
+                    <mat-radio-button [checked]="quiz?.question[i]?.option2 ===  repCand[i]"
+                      class="example-radio-button" (click)="check(quiz?.question[i]?.option2)">
+                      {{quiz?.question[i]?.option2}}</mat-radio-button>
+                    <mat-radio-button [checked]="quiz?.question[i]?.option3 ===  repCand[i]"
+                      class="example-radio-button" (click)="check(quiz?.question[i]?.option3)">
+                      {{quiz?.question[i]?.option3}}</mat-radio-button>
+                    <mat-radio-button [checked]="quiz?.question[i]?.option4 ===  repCand[i]"
+                      class="example-radio-button" (click)="check(quiz?.question[i]?.option4)">
+                      {{quiz?.question[i]?.option4}}</mat-radio-button>
+                   
                 </div>
               </div>
+            </div>
+            <div class="card-footer">
+              <div class="mr-auto" *ngIf="i < quiz?.question?.length -1 && quiz?.question?.length > 1 ">
+                <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" (click)="next()" name="next"
+                  value="Next">
+              </div>
+              <div class="mr-auto" *ngIf="i === quiz?.question?.length -1 || quiz?.question?.length === 1">
+                <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" data-toggle="modal"
+                  data-target="#myModal" (click)="finish()" name="next" value="Finished">
+              </div>
+              <div class="ml-auto" *ngIf="i > 0">
+                <input type="button" (click)="previous()" class="btn btn-finish btn-fill btn-rose btn-wd"
+                  name="previous" value="Back">
+              </div>
+              <div class="clearfix"></div>
             </div>
           </div>
         </div>
@@ -51,5 +52,20 @@
     </div>
   </div>
 </div>
-
-<!-- Form starts -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h1>tour result is <h2>{{score}}/{{quiz?.question.length}}</h2> Question</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    
+  </div>

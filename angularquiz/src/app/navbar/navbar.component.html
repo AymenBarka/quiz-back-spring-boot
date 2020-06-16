@@ -4,24 +4,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-            <a routerLink="/login" class="nav-link">
+            <a routerLink="/login" class="nav-link"  *ngIf="!service.loggedIn()">
                 <mat-icon>fingerprint</mat-icon>
               Login <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a routerLink="/coach/list" class="nav-link">
+          <a routerLink="/coach/list"  class="nav-link" *ngIf="service.loggedIn()">
               <mat-icon>fingerprint</mat-icon>
             List <span class="sr-only">(current)</span></a>
       </li>
         <li class="nav-item">
-            <a routerLink="/register" class="nav-link">
+            <a routerLink="/register" class="nav-link" *ngIf="!service.loggedIn()">
                 <mat-icon>person_add</mat-icon>
               Register</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/coach/add" class="nav-link">
+          <a routerLink="/coach/add" class="nav-link" *ngIf="service.loggedIn()">
               <mat-icon>person_add</mat-icon>
             ADD</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink=" " (click)="logout()" *ngIf="service.loggedIn()">
+          <mat-icon>fingerprint</mat-icon>
+          Logout <span class="sr-only">(current)</span></a>
       </li>
       </ul>
     </div>

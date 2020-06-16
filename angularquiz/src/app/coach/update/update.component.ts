@@ -1,3 +1,4 @@
+import { Question } from './../../models/question';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CoachService } from 'src/app/service/coach.service';
@@ -17,22 +18,16 @@ export class UpdateComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private service: CoachService) { }
 
   ngOnInit(): void {
-    // this.id = this.route.snapshot.params.id;
    this.quiz = new Quiz();
     this.route.paramMap.subscribe(ParamMap => {
-
       this.service.gettedQuiz(this.route.snapshot.params.id).subscribe(data => {
         this.quiz = data;
-        console.log(this.quiz.question);
-
-
         this.testup = new FormGroup({
-          //  idcoach: new FormControl(this.service.listtest[this.index].idcoach),
+          id: new FormControl(this.quiz.id),
           titre: new FormControl(this.quiz.titre),
           question: new FormArray([])
         });
         this.initQ();
-
       })
     });
   }
@@ -47,15 +42,14 @@ export class UpdateComponent implements OnInit {
       option4: new FormControl('')
     });
   }
-  initQ() {//this.service.gettedQuiz[this.quiz._id]
-    console.log(this.quiz.question)
+  initQ() {
    this.quiz.question.map(q => {
       (this.testup.get('question') as FormArray).push(this.quesInit(q));
-      console.log(this.testup)
     });
   }
   quesInit(q): FormGroup {
     return new FormGroup({
+      id: new FormControl(q.id),
       questionName: new FormControl(q.questionName),
       reponse: new FormControl(q.reponse),
       option1: new FormControl(q.option1),
@@ -70,15 +64,20 @@ export class UpdateComponent implements OnInit {
   }
  
   update() {
-    this.service.updateQuiz(this.quiz.id, this.testup).subscribe(data => {
-       console.log(data);
+    this.formValues();
+    console.log(this.testup.value);
+    this.service.updateQuiz(this.quiz.id, this.testup.value).subscribe(data => {
+      console.log(data)
+
      this.router.navigateByUrl('/register');
     },err =>{
-
-    console.log(err)
+      console.log(JSON.stringify(err));
     });
   }
- 
+ formValues(){
+   this.quiz.titre = this.testup.value.titre;
+   this.quiz.question = this.testup.value.question;
+ }
 
 }
 
