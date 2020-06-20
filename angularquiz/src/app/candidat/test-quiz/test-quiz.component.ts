@@ -1,8 +1,10 @@
+import { CandidatService } from './../../service/candidat.service';
 import { FormControl } from '@angular/forms';
 import { Question } from './../../models/question';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoachService } from 'src/app/service/coach.service';
+import { TokenStorageService } from 'src/app/token/token-storage.service';
 
 @Component({
   selector: 'app-test-quiz',
@@ -17,8 +19,9 @@ export class TestQuizComponent implements OnInit {
   option = "";
 
   id: number;
-  question : Question;
-  constructor(private route: ActivatedRoute, private service: CoachService) { }
+  //question : Question;
+ 
+  constructor(private route: ActivatedRoute, private service: CoachService, private servicequiz:CandidatService, private tokenStorage : TokenStorageService) { }
   
   ngOnInit(): void {
     this.route.paramMap.subscribe(ParamMap => {
@@ -50,6 +53,21 @@ export class TestQuizComponent implements OnInit {
   }
   finish() {
     console.log(this.score);
+    this.route.paramMap.subscribe(ParamMap => {
+    let user: any =  this.tokenStorage.getUser();
+    delete user.roles;
+    let payLoad: any = {
+      quiz: this.quiz,
+      user: user,
+      score: this.score
+    }
+    console.log(payLoad);
+      this.servicequiz.resultQuiz(payLoad).subscribe(data =>{
+        console.log(payLoad);
+       console.log("data ==> " + data);
+      })
+    })
+    
   }
  
 }

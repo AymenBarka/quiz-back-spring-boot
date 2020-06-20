@@ -4,4 +4,5 @@ export class Quiz {
   id: number;
   titre: string;
   question: Question[];
+  resultat: Object[];
 }

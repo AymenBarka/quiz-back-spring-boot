@@ -28,6 +28,6 @@ export class CoachService {
     return this.http.put(`${this.URL}`+ 'UpdateQuiz' + '/'  + `${id}`,value,httpOptions);
   }
   gettedQuiz(id:number):Observable<any>{
-    return this.http.get(`${this.URL}` + 'quizbyId' + '/'  + `${id}`);
+    return this.http.get(`${this.URL}` + 'quizbyId' + '/'  + `${id}`, httpOptions);
   }
 }
